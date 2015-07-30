@@ -22,7 +22,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr data-bind="foreach: arr, attr: {test: arr[0]}">
+        <tr data-bindssss="foreach: arr, attr: {test: arr[0]}">
           <td data-bind="text: name">
           </td>
           <td data-bind="text: age">
@@ -35,7 +35,8 @@
         {name: 'LiuLongbin', age: 24},
         {name: 'ChenXuyang', age: 25}
       ];
-      Template.Apply($('#tab'), {arr: arr});
+      Template.Apply($('#tab'));
+      Template.Rander($('#tab'), {arr: arr});
     </script>
   </body>
 </html>

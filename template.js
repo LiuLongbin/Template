@@ -2,16 +2,29 @@ var Template = (function(){
   var Template = function(){
 
   }
-  Template.Apply = function(jquery, data){
+  Template.Apply = function(jquery){
     jquery.find('[data-bind]').each(function(index,element){
       var $this = $(element),
           bind_string = $this.data('bind'),
           bind_object = Template.ParseBindObject(bind_string);
           $.each(bind_object,function(key,bind){
-            var func = Method[key];
-            if(func) func($this);
+            $this.data('__Bind__',Method[key]);
+            $this.data('__Data__', bind);
+            //var value = data['arr'][0][bind];
+            //var func = Method[key];
+            //if(func) func($this,value);
           })
-    })
+    });
+  }
+  Template.Rander = function(jquery, root){
+    jquery.children().each(function(index, element){
+      var $this = $(element),
+          func = $this.data('__Bind__'),
+          data = $this.data('__Data__');
+      if(func)
+        func($this, root['arr'][0][data]);
+      Template.Rander($this, root);
+    });
   }
   Template.ParseBindObject=function(bindText) {
     if (!bindText) return {};
@@ -56,8 +69,8 @@ var Method = (function(){
   Method.foreach = function(){
     console.log('foreach');
   }
-  Method.text = function(jquery){
-
+  Method.text = function(jquery,bind){
+    jquery.text(bind);
   }
   return Method;
 })();
