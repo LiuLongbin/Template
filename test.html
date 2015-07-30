@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="viewport" content="width=1020">
+    <title>Template test</title>
+  </head>
+  <script src="./node_modules/jquery/dist/jquery.js" charset="utf-8"></script>
+  <script src="./template.js" charset="utf-8"></script>
+  <body>
+    <table id="tab">
+      <thead>
+        <tr>
+          <th>
+            Name
+          </th>
+          <th>
+            Age
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-bind="foreach: arr, attr: {test: arr[0]}">
+          <td data-bind="text: name">
+          </td>
+          <td data-bind="text: age">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <script type="text/javascript">
+      var arr = [
+        {name: 'LiuLongbin', age: 24},
+        {name: 'ChenXuyang', age: 25}
+      ];
+      Template.Apply($('#tab'), {arr: arr});
+    </script>
+  </body>
+</html>
