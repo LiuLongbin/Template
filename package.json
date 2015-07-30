@@ -1,0 +1,20 @@
+{
+  "name": "Template",
+  "productName": "Template",
+  "version": "0.0.1",
+  "description": "test",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liulongbin/Template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/liulongbin/Template/issues"
+  },
+  "license": "Apache License Version 2.0",
+  "dependencies": {
+    "jquery": "^2.1.4"
+  },
+  "scripts": {
+    "test": "node script/test"
+  }
+}
